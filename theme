@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ page_title }}</title>
+    <link rel="stylesheet" href="{{ 'styles.css' | asset_url }}">
+</head>
+<body>
+
+<div class="age-verification-popup" id="ageVerificationPopup">
+    <div class="age-verification-content">
+        <h2>Age Verification</h2>
+        <p>Please confirm that you are 18 years of age or older to enter this site:</p>
+        <form action="/home" method="post">
+            <label for="age">Date of Birth:</label>
+            <input type="date" id="age" name="age" required>
+            <button type="submit">Enter</button>
+        </form>
+    </div>
+</div>
+
+<header>
+    <!-- Add your header content here -->
+</header>
+
+<main>
+    <!-- Add your product showcase here -->
+    {% for product in collections.all.products %}
+        <div class="product">
+            <h3>{{ product.title }}</h3>
+            <p>{{ product.description }}</p>
+            <p>Price: {{ product.price | money }}</p>
+            <a href="{{ product.url }}">View Product</a>
+        </div>
+    {% endfor %}
+</main>
+
+<footer>
+    <!-- Add your footer content here -->
+</footer>
+
+<script src="{{ 'scripts.js' | asset_url }}"></script>
+</body>
+</html>
+
+
+
+
+
+/* Add your CSS styles here */
+/* Styles for age verification pop-up */
+.age-verification-popup {
+    display: none;
+    /* Add styles for pop-up position, background, etc. */
+}
+
+/* Styles for product showcase */
+.product {
+    /* Add styles for product display */
+}
+
+
+
+
+// JavaScript for displaying age verification pop-up
+document.addEventListener('DOMContentLoaded', function () {
+    var ageVerificationPopup = document.getElementById('ageVerificationPopup');
+    ageVerificationPopup.style.display = 'block';
+});
+
